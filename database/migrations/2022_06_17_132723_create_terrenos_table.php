@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTerrenosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('terrenos', function (Blueprint $table) {

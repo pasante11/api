@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+//buscar de los terrenos
 class SearchServiceController extends Controller
 {
     //
@@ -11,6 +11,7 @@ class SearchServiceController extends Controller
     {
         $pi = $request->input("pi");
         $manzana = $request->input("manzana");
+        //$lote = $request->input("numlote");
         $sql = 
         "SELECT terrenos.numlote 
         FROM terrenos 
