@@ -44,3 +44,4 @@ Route::apiResource('users','App\Http\Controllers\UserController');
 Route::post('serviciobusquedad','App\Http\Controllers\SearchServiceController@search');    
 Route::post('serviciobusquedadinspeccions','App\Http\Controllers\PHPSearchServiceInspeccionsController@searchInspeccions');    
 Route::post('updateInspeccions','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccions');    
+Route::post('phpgetInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getInspeccions');    
