@@ -20,9 +20,9 @@ class PHPGetInspeccionsServiceController extends Controller
             $sql ="SELECT empresas.razonsocial, empresas.telefono, empresas.email, inspeccions.replegalposeedor,
             inspeccions.telefonoposeedor, inspeccions.emailposeedor, inspeccions.nit, inspeccions.registrocomercio, inspeccions.rai, inspeccions.psst, inspeccions.licenciambiental, inspeccions.medidorcre, inspeccions.medidorsaguapac
             FROM inspeccions, empresas 
-            WHERE inspeccions.terreno_id =  $idTerreno AND  empresas.id = (SELECT estados.empresa_id 
+            WHERE inspeccions.terreno_id =  '$idTerreno' AND  empresas.id = (SELECT estados.empresa_id 
                                                                        FROM estados 
-                                                                       WHERE estados.terreno_id= $idTerreno)";
+                                                                       WHERE estados.terreno_id= '$idTerreno')";
             $resultado = DB::select($sql);
             if (!empty($resultado))
             {
