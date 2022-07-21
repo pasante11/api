@@ -134,19 +134,19 @@ class PHPUpdateInspecionsServiceController extends Controller
     $condicionposeedor = $request->input("condicionposeedor");
     $nombredelpersonal = $request->input("nombredelpersonal");
     $telefonopersonal = $request->input("telefonopersonal");
-    $obs = $request->input("obs");
+    $observacionentrevista = $request->input("observacionentrevista");
     $oPaquete = [
                 'message' => 'success',
                 'values' => null
             ];
     try
           {
-              $sql ="UPDATE inspeccions SET inspeccions.condicionposeedor = '$condicionposeedor' and inspeccions.nombredelpersonal = '$nombredelpersonal', inspeccions.telefonopersonal = '$telefonopersonal', inspeccions.obs = '$obs' WHERE inspeccions.terreno_id ='$idTerreno'";
+              $sql ="UPDATE inspeccions SET inspeccions.condicionposeedor = '$condicionposeedor' and inspeccions.nombredelpersonal = '$nombredelpersonal', inspeccions.telefonopersonal = '$telefonopersonal', inspeccions.observacionentrevista = '$observacionentrevista' WHERE inspeccions.terreno_id ='$idTerreno'";
               $inspeccions = DB::table('inspeccions')
                                  ->where('terreno_id', $idTerreno)
-                                 ->update(['condicionposeedor'=>$condicionposeedor,'nombredelpersonal'=>$nombredelpersonal, 'telefonopersonal' => $telefonopersonal, 'obs' => $obs]);
+                                 ->update(['condicionposeedor'=>$condicionposeedor,'nombredelpersonal'=>$nombredelpersonal, 'telefonopersonal' => $telefonopersonal, 'observacionentrevista' => $observacionentrevista]);
               
-              $sql1 ="SELECT inspeccions.condicionposeedor,inspeccions.nombredelpersonal, inspeccions.telefonopersonal, inspeccions.obs FROM inspeccions WHERE inspeccions.terreno_id='$idTerreno'";
+              $sql1 ="SELECT inspeccions.condicionposeedor,inspeccions.nombredelpersonal, inspeccions.telefonopersonal, inspeccions.observacionentrevista FROM inspeccions WHERE inspeccions.terreno_id='$idTerreno'";
               $resultado = DB::select($sql1);
 
               if (!empty($resultado))
@@ -415,4 +415,12 @@ public function updateInspeccionsDatosInfraestructuraIndustriaPageCuatro(Request
             $oPaquete
         ); 
  }
+
+/*
+SELECT inspeccions.empresacontratobasura, inspeccions.residuossolidos, inspeccions.residuosliquidos
+FROM inspeccions WHERE inspeccions.terreno_id=560001;
+
+SELECT inspeccions.residuosgaseosos, inspeccions.obs, inspeccions.archivo
+FROM inspeccions WHERE inspeccions.terreno_id=560001;  
+*/
 }
