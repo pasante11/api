@@ -44,5 +44,16 @@ Route::apiResource('users','App\Http\Controllers\UserController');
 Route::post('serviciobusquedad','App\Http\Controllers\SearchServiceController@search');    
 Route::post('serviciobusquedadinspeccions','App\Http\Controllers\PHPSearchServiceInspeccionsController@searchInspeccions');    
 Route::post('updateInspeccions','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccions');    
+
 Route::post('updateInspeccionsdatosgenerales','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosGenerales');    
+Route::post('updateInspeccionsdatosOcupacionTerreno','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosOcupacionTerreno');    
+Route::post('updateInspeccionsdatosOcupacionTerrenoDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosOcupacionTerrenoPageDos');    
+Route::post('updateInspeccionsdatosActividadEconimica','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosActividadEconomicaIndustrial');    
+Route::post('updateInspeccionsdatosActividadEconimicaDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosActividadEconomicaIndustrialPageDos');    
+Route::post('updateInspeccionsDatosInfraestructura','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustria'); 
+Route::post('updateInspeccionsDatosInfraestructuraDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageDos'); 
+Route::post('updateInspeccionsDatosInfraestructuraTres','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageTres'); 
+Route::post('updateInspeccionsDatosInfraestructuraCuatro','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageCuatro'); 
+
+
 Route::post('phpgetInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getInspeccions');    
