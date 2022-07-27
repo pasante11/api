@@ -415,7 +415,84 @@ public function updateInspeccionsDatosInfraestructuraIndustriaPageCuatro(Request
             $oPaquete
         ); 
  }
+//ELIMINACION RESIDUOS
+public function updateInspeccionsEliminarResiduos(Request $request)
+{
+$idTerreno = $request->input("idTerreno");
+$empresacontratobasura = $request->input("empresacontratobasura");
+$residuossolidos = $request->input("residuossolidos");
+$residuosliquidos = $request->input("residuosliquidos");
+$oPaquete = [
+            'message' => 'success',
+            'values' => null
+        ];
+try
+      {
+          $sql ="UPDATE inspeccions SET inspeccions.empresacontratobasura = '$empresacontratobasura' and inspeccions.residuossolidos = '$residuossolidos', inspeccions.residuosliquidos = '$residuosliquidos' WHERE inspeccions.terreno_id ='$idTerreno'";
+          $inspeccions = DB::table('inspeccions')
+                             ->where('terreno_id', $idTerreno)
+                             ->update(['empresacontratobasura'=>$empresacontratobasura,'residuossolidos'=>$residuossolidos, 'residuosliquidos' => $residuosliquidos]);
+          
+          $sql1 ="SELECT inspeccions.empresacontratobasura, inspeccions.residuossolidos, inspeccions.residuosliquidos
+          FROM inspeccions WHERE inspeccions.terreno_id ='$idTerreno'";
+          $resultado = DB::select($sql1);
 
+          if (!empty($resultado))
+          {
+              $oPaquete["message"] = "Datos actualizados exitosamente";
+              $oPaquete["values"] = $resultado[0];
+          }else{
+              $oPaquete["message"] = "No existe el dato";
+              $oPaquete["values"] = null;
+          }
+      }catch (\Throwable $ex){
+          $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+          $oPaquete["values"] = null;
+      }
+
+      return response()->json(
+          $oPaquete
+      ); 
+}
+//ELIMINACION RESIDUOS 
+public function updateInspeccionsEliminarResiduosPageDos(Request $request)
+{
+$idTerreno = $request->input("idTerreno");
+$residuosgaseosos = $request->input("residuosgaseosos");
+$obs = $request->input("obs");
+$archivo = $request->input("archivo");
+$oPaquete = [
+            'message' => 'success',
+            'values' => null
+        ];
+try
+      {
+          $sql ="UPDATE inspeccions SET inspeccions.residuosgaseosos = '$residuosgaseosos' and inspeccions.obs = '$obs', inspeccions.archivo = '$archivo' WHERE inspeccions.terreno_id ='$idTerreno'";
+          $inspeccions = DB::table('inspeccions')
+                             ->where('terreno_id', $idTerreno)
+                             ->update(['residuosgaseosos'=>$residuosgaseosos,'obs'=>$obs, 'archivo' => $archivo]);
+          
+          $sql1 ="SELECT inspeccions.residuosgaseosos, inspeccions.obs, inspeccions.archivo
+          FROM inspeccions WHERE inspeccions.terreno_id ='$idTerreno'";
+          $resultado = DB::select($sql1);
+
+          if (!empty($resultado))
+          {
+              $oPaquete["message"] = "Datos actualizados exitosamente";
+              $oPaquete["values"] = $resultado[0];
+          }else{
+              $oPaquete["message"] = "No existe el dato";
+              $oPaquete["values"] = null;
+          }
+      }catch (\Throwable $ex){
+          $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+          $oPaquete["values"] = null;
+      }
+
+      return response()->json(
+          $oPaquete
+      ); 
+}
 /*
 SELECT inspeccions.empresacontratobasura, inspeccions.residuossolidos, inspeccions.residuosliquidos
 FROM inspeccions WHERE inspeccions.terreno_id=560001;

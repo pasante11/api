@@ -54,6 +54,8 @@ Route::post('updateInspeccionsDatosInfraestructura','App\Http\Controllers\PHPUpd
 Route::post('updateInspeccionsDatosInfraestructuraDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageDos'); 
 Route::post('updateInspeccionsDatosInfraestructuraTres','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageTres'); 
 Route::post('updateInspeccionsDatosInfraestructuraCuatro','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosInfraestructuraIndustriaPageCuatro'); 
+Route::post('updateInspeccionsEliminarResiduos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsEliminarResiduos'); 
+Route::post('updateInspeccionsEliminarResiduosPageDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsEliminarResiduosPageDos'); 
 
 
 Route::post('phpgetInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getInspeccions');    
