@@ -45,6 +45,7 @@ Route::post('serviciobusquedad','App\Http\Controllers\SearchServiceController@se
 Route::post('serviciobusquedadinspeccions','App\Http\Controllers\PHPSearchServiceInspeccionsController@searchInspeccions');    
 Route::post('updateInspeccions','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccions');    
 
+Route::post('login','App\Http\Controllers\PHPUpdateInspecionsServiceController@loginInspeccion');    
 Route::post('updateInspeccionsdatosgenerales','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosGenerales');    
 Route::post('updateInspeccionsdatosOcupacionTerreno','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosOcupacionTerreno');    
 Route::post('updateInspeccionsdatosOcupacionTerrenoDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsDatosOcupacionTerrenoPageDos');    

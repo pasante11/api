@@ -3,10 +3,98 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Encryption;
 use Illuminate\Support\Facades\DB;
 
 class PHPUpdateInspecionsServiceController extends Controller
 {
+    //login con Username
+    public function loginInspeccion(Request $request)
+    {
+    $username = $request->input("username");
+    $password = $request->input("password");
+  
+    $oPaquete = [
+                'message' => 'success',
+                'values' => null
+            ];
+    try
+          {
+            $sql ="SELECT users.id, users.email, users.name, users.username, users.password FROM users WHERE users.username ='$username'";
+            $resultado = DB::select($sql);
+
+            if (!empty($resultado))
+            {
+                    $contrasena = $oPaquete["values"] = $resultado[0]->{"password"};
+                    if($oPaquete["values"] = $resultado[0]->{"password"} ==  crypt($password, $contrasena) || $oPaquete["values"] = $resultado[0]->{"password"} ==  $password){
+                        $oPaquete["message"] = "Inicio de Sesion Exitoso";
+                        $oPaquete["values"] = $resultado[0];     
+                    }else{
+                        $oPaquete["message"] = "Error de Contraseña";
+                        $oPaquete["values"] = null; 
+                    }
+                                          
+            }else{
+                $oPaquete["message"] = "No existe el usuario";
+                $oPaquete["values"] = null;
+            }
+          }catch (\Throwable $ex){
+              $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+              $oPaquete["values"] = null;
+          }
+
+          return response()->json(
+              $oPaquete
+          ); 
+   }
+    //Login De Inspeccion con Email
+//     public function loginInspeccion(Request $request)
+//     {
+//     $email = $request->input("email");
+//     $password = $request->input("password");
+  
+//     $oPaquete = [
+//                 'message' => 'success',
+//                 'values' => null
+//             ];
+//     try
+//           {
+//               $sql ="SELECT * FROM users WHERE users.email ='$email'";
+//               $resultado = DB::select($sql);
+
+      
+
+//               if (!empty($resultado))
+//               {
+
+//                 //$obtenerContrasena ="SELECT users.password FROM users WHERE users.email ='$email'";
+//                 //$contrasena = DB::select($obtenerContrasena);
+//                 $contrasena = $oPaquete["values"] = $resultado[0]->{"password"};
+
+//                 //if(crypt($password, $contrasena)==true || equal($password)){
+//                 if($oPaquete["values"] = $resultado[0]->{"password"} ==  crypt($password, $contrasena) || $oPaquete["values"] = $resultado[0]->{"password"} ==  $password){
+//                 //if($oPaquete["values"] = $resultado[0]->{"password"} ==  $password){
+//                     $oPaquete["message"] = "Inicio de Sesion Exitoso";
+//                     $oPaquete["values"] = $resultado[0];     
+//                 }else{
+//                     $oPaquete["message"] = "Error de Contraseña";
+//                     $oPaquete["values"] = null; 
+//                 }
+                      
+//               }else{
+//                   $oPaquete["message"] = "No existe el usuario";
+//                   $oPaquete["values"] = null;
+//               }
+//           }catch (\Throwable $ex){
+//               $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+//               $oPaquete["values"] = null;
+//           }
+
+//           return response()->json(
+//               $oPaquete
+//           ); 
+//    }
+    
     //Datos Generales
     public function updateInspeccions(Request $request)
     {
@@ -33,7 +121,7 @@ class PHPUpdateInspecionsServiceController extends Controller
                   $oPaquete["message"] = "Datos actualizados exitosamente";
                   $oPaquete["values"] = $resultado[0];
               }else{
-                  $oPaquete["message"] = "No existe el dato";
+                  $oPaquete["message"] = "No existe el dato del la inspeccions page 1";
                   $oPaquete["values"] = null;
               }
           }catch (\Throwable $ex){
@@ -74,7 +162,7 @@ class PHPUpdateInspecionsServiceController extends Controller
                  $oPaquete["message"] = "Datos actualizados exitosamente";
                  $oPaquete["values"] = $resultado[0];
              }else{
-                 $oPaquete["message"] = "No existe el dato";
+                 $oPaquete["message"] = "No existe el dato Page 2";
                  $oPaquete["values"] = null;
              }
          }catch (\Throwable $ex){
