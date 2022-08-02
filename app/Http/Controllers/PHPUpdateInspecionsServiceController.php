@@ -20,18 +20,21 @@ class PHPUpdateInspecionsServiceController extends Controller
             ];
     try
           {
-            $sql ="SELECT users.id, users.email, users.name, users.username, users.password FROM users WHERE users.username ='$username'";
+            $sql ="SELECT users.id, users.email, users.name, users.username FROM users WHERE users.username ='$username'";
             $resultado = DB::select($sql);
+
+            $obtenerContrasena ="SELECT users.password FROM users WHERE users.username ='$username'";
+            $resultadoContrasena = DB::select($obtenerContrasena);
 
             if (!empty($resultado))
             {
-                    $contrasena = $oPaquete["values"] = $resultado[0]->{"password"};
-                    if($oPaquete["values"] = $resultado[0]->{"password"} ==  crypt($password, $contrasena) || $oPaquete["values"] = $resultado[0]->{"password"} ==  $password){
+                    $contrasena = $oPaquete["values"] = $resultadoContrasena[0]->{"password"};
+                    if($oPaquete["values"] = $resultadoContrasena[0]->{"password"} ==  crypt($password, $contrasena) || $oPaquete["values"] = $resultadoContrasena[0]->{"password"} ==  $password){
                         $oPaquete["message"] = "Inicio de Sesion Exitoso";
                         $oPaquete["values"] = $resultado[0];     
                     }else{
                         $oPaquete["message"] = "Error de Contraseña";
-                        $oPaquete["values"] = null; 
+                        $oPaquete["values"] = $resultado[0]; 
                     }
                                           
             }else{
