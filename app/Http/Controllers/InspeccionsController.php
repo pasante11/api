@@ -16,22 +16,14 @@ class InspeccionsController extends Controller
      */
     public function index()
     {
-        // $sql ="SELECT *  FROM inspeccions";
-        // $resultado = DB::select($sql);
-        // return  response()->json( 
-        //     array(
-        //         'message' => 'success',
-        //         'values' => $resultado[3]
-        //     ),200
-        // ); 
-      
         $oPaquete = [
                     'message' => 'success',
                     'values' => null
                 ];
         try
               {
-                  $sql ="SELECT inspeccions.id ,inspeccions.terreno_id, inspeccions.fecha  FROM inspeccions";
+                  //$sql ="SELECT inspeccions.id ,inspeccions.terreno_id, inspeccions.fecha  FROM inspeccions";
+                  $sql ="SELECT terrenos.pi, terrenos.manzana, terrenos.numlote, inspeccions.fecha FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
                   $resultado = DB::select($sql);
 
                   $sqlTotal = "SELECT COUNT(inspeccions.id) AS Count FROM inspeccions";
@@ -41,17 +33,12 @@ class InspeccionsController extends Controller
                   {
                       $oPaquete["message"] = "Datos actualizados exitosamente";
                       $oPaquete["values"] = $resultado;
-                    //   $oPaquete["values"] = array(
-                    //     'id1'=>$resultado[0],
-                    //     'id2'=>$resultado[1],
-                    //     'id3'=>$resultado[2]
-                    //     );
                   }else{
                       $oPaquete["message"] = "No existe el dato del la inspeccions";
                       $oPaquete["values"] = null;
                   }
               }catch (\Throwable $ex){
-                  $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+                  $oPaquete["message"] = "No se pudo realizar la accion, por favor intente de nuevo.";
                   $oPaquete["values"] = null;
               }
     
