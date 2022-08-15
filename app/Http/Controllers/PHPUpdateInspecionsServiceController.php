@@ -20,7 +20,7 @@ class PHPUpdateInspecionsServiceController extends Controller
             ];
     try
           {
-            $sql ="SELECT users.id, users.email, users.name, users.username FROM users WHERE users.username ='$username'";
+            $sql ="SELECT users.name, users.username FROM users WHERE users.username ='$username'";
             $resultado = DB::select($sql);
 
             $obtenerContrasena ="SELECT users.password FROM users WHERE users.username ='$username'";

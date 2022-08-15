@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Inspeccions;
+//use App\Models\Terrenos;
 use Illuminate\Http\Request;
+use App\Models\Inspeccions;
 use Illuminate\Support\Facades\DB;
 
 class InspeccionsController extends Controller
@@ -15,8 +16,48 @@ class InspeccionsController extends Controller
      */
     public function index()
     {
-        //
-        return Inspeccions::all();
+        // $sql ="SELECT *  FROM inspeccions";
+        // $resultado = DB::select($sql);
+        // return  response()->json( 
+        //     array(
+        //         'message' => 'success',
+        //         'values' => $resultado[3]
+        //     ),200
+        // ); 
+      
+        $oPaquete = [
+                    'message' => 'success',
+                    'values' => null
+                ];
+        try
+              {
+                  $sql ="SELECT inspeccions.id ,inspeccions.terreno_id, inspeccions.fecha  FROM inspeccions";
+                  $resultado = DB::select($sql);
+
+                  $sqlTotal = "SELECT COUNT(inspeccions.id) AS Count FROM inspeccions";
+                  $total = DB::select($sqlTotal);
+
+                  if (!empty($resultado))
+                  {
+                      $oPaquete["message"] = "Datos actualizados exitosamente";
+                      $oPaquete["values"] = $resultado;
+                    //   $oPaquete["values"] = array(
+                    //     'id1'=>$resultado[0],
+                    //     'id2'=>$resultado[1],
+                    //     'id3'=>$resultado[2]
+                    //     );
+                  }else{
+                      $oPaquete["message"] = "No existe el dato del la inspeccions";
+                      $oPaquete["values"] = null;
+                  }
+              }catch (\Throwable $ex){
+                  $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+                  $oPaquete["values"] = null;
+              }
+    
+              return response()->json(
+                  $oPaquete
+              ); 
     }
 
     /**
