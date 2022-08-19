@@ -26,9 +26,6 @@ class InspeccionsController extends Controller
                   $sql ="SELECT terrenos.pi, terrenos.manzana, terrenos.numlote, inspeccions.fecha FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
                   $resultado = DB::select($sql);
 
-                  $sqlTotal = "SELECT COUNT(inspeccions.id) AS Count FROM inspeccions";
-                  $total = DB::select($sqlTotal);
-
                   if (!empty($resultado))
                   {
                       $oPaquete["message"] = "Datos actualizados exitosamente";

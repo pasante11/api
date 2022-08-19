@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TerrenosController;
+use App\Http\Controllers\PHPGetListadoController;
 use App\Models\Terrenos;
 
 /*
@@ -59,4 +60,9 @@ Route::post('updateInspeccionsEliminarResiduos','App\Http\Controllers\PHPUpdateI
 Route::post('updateInspeccionsEliminarResiduosPageDos','App\Http\Controllers\PHPUpdateInspecionsServiceController@updateInspeccionsEliminarResiduosPageDos'); 
 
 
-Route::post('phpgetInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getInspeccions');    
+Route::post('phpgetInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getInspeccions');   
+Route::post('phpgetListaDeInspeccions','App\Http\Controllers\PHPGetInspeccionsServiceController@getListaDeInspeccions');   
+Route::post('phpgetDatosHomePage','App\Http\Controllers\PHPGetInspeccionsServiceController@getDatosHomePage');   
+
+Route::get('phpgetPI','App\Http\Controllers\PHPGetListadoController@getPI');    
+Route::post('phpgetListado','App\Http\Controllers\PHPGetListadoController@getListado');    

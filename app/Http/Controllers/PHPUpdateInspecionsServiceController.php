@@ -39,11 +39,11 @@ class PHPUpdateInspecionsServiceController extends Controller
                                           
             }else{
                 $oPaquete["message"] = "No existe el usuario";
-                $oPaquete["values"] = null;
+                $oPaquete["values"] = [0];
             }
           }catch (\Throwable $ex){
               $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
-              $oPaquete["values"] = null;
+              $oPaquete["values"] = [];
           }
 
           return response()->json(
@@ -125,11 +125,11 @@ class PHPUpdateInspecionsServiceController extends Controller
                   $oPaquete["values"] = $resultado[0];
               }else{
                   $oPaquete["message"] = "No existe el dato del la inspeccions page 1";
-                  $oPaquete["values"] = null;
+                  $oPaquete["values"] = [];
               }
           }catch (\Throwable $ex){
               $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
-              $oPaquete["values"] = null;
+              $oPaquete["values"] = [];
           }
 
           return response()->json(
