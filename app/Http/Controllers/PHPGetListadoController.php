@@ -10,7 +10,7 @@ class PHPGetListadoController extends Controller
     //
     public function getPI(Request $request){
         $oPaquete = [
-            'message' => true,
+            'message' => 'success',
             'lista'=> []
         ];
     try
@@ -20,14 +20,14 @@ class PHPGetListadoController extends Controller
 
           if (!empty($resultado))
           {
-              $oPaquete["message"] = true;
+              $oPaquete["message"] = "Datos obtenidos exitosamente";
               $oPaquete["lista"] = [$resultado];
           }else{
-              $oPaquete["message"] = false;
+              $oPaquete["message"] = "No existe el dato";
               $oPaquete["lista"] = [];
           }
       }catch (\Throwable $ex){
-          $oPaquete["message"] = false;
+          $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
           $oPaquete["lista"] = [];
       }
 
