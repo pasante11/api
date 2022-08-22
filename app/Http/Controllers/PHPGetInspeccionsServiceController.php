@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class PHPGetInspeccionsServiceController extends Controller
 {
-  //
+  //Get Datos
   public function getDatosHomePage(Request $request){
     $idTerreno = $request->input("idTerreno");
     $oPaquete = [
