@@ -15,12 +15,28 @@ class PHPGetListadoController extends Controller
         ];
     try
       {
-          $link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd', 3306);      
-          //$dbh = mysqli_connect($db_server, DB_USERNAME, DB_PASSWORD, DB_NAME, $port);
-          $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-          //$resultado =  DB::select($sql);
-          $resultado =  mysqli_select_db($link, 'dicbd');
+          
 
+        //   $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
+        //   $resultado =  DB::select($sql);
+
+
+
+          /**/
+          //CONEXIÓN A LA BASE DE DATOS
+                $hostname_db = "mysql.parqueindustrial.libreta.net";
+                $database_db = "dicbd";
+                $username_db = "parquejacque";
+                $password_db = "ScparqueSc";
+                
+                //Conectar a la base de datos
+                $conexion = mysqli_connect($hostname_db, $username_db, $password_db);
+                //Seleccionar la base de datos
+                mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
+                //CONSULTA A LA BASE DE DATOS
+                $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
+                $resultado=mysqli_query($conexion,$accion_nm);
+          /**/
           if (!empty($resultado))
           {
               $oPaquete["message"] = "Datos obtenidos exitosamente";
