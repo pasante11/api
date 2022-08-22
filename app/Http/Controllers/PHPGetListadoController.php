@@ -17,7 +17,7 @@ class PHPGetListadoController extends Controller
       {
           //$link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd');      
           $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-          $resultado = DB::select($sql);
+          $resultado =  DB_SERVER::select($sql);
 
           if (!empty($resultado))
           {
