@@ -14,12 +14,12 @@ class TerrenosController extends Controller
         //sreturn Terrenos::all();
         // $id=30004;
         // return Terrenos::where('id', $id)->get();
-        $link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd');      
+        //$link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd');      
         $sql = 
         "SELECT terrenos.pi
         FROM terrenos";
-        //$terrenos = DB::select($sql);
-        $terrenos = mysqli_query($link,$sql);
+        $terrenos = DB::select($sql);
+        //$terrenos = mysqli_query($link,$sql);
         return response()->json($terrenos);
     }
 
