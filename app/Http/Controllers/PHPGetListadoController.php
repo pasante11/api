@@ -27,6 +27,7 @@ class PHPGetListadoController extends Controller
               $oPaquete["lista"] = [];
           }
       }catch (\Throwable $ex){
+          $ex->getMessage();
           $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
           $oPaquete["lista"] = [];
       }
