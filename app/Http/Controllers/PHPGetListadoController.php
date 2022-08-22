@@ -20,22 +20,20 @@ class PHPGetListadoController extends Controller
         //   $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
         //   $resultado =  DB::select($sql);
 
-
-
           /**/
           //CONEXIÓN A LA BASE DE DATOS
                 $hostname_db = "mysql.parqueindustrial.libreta.net";
                 $database_db = "dicbd";
                 $username_db = "parquejacque";
                 $password_db = "ScparqueSc";
-                
                 //Conectar a la base de datos
                 $conexion = mysqli_connect($hostname_db, $username_db, $password_db);
+                $resultado = $conexion->query("SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id");
                 //Seleccionar la base de datos
-                mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
+                //mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
                 //CONSULTA A LA BASE DE DATOS
-                $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-                $resultado=mysqli_query($conexion,$accion_nm);
+                //$accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
+                //$resultado=mysqli_query($conexion,$accion_nm);
           /**/
           if (!empty($resultado))
           {
