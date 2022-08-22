@@ -15,9 +15,11 @@ class PHPGetListadoController extends Controller
         ];
     try
       {
-          //$link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd');      
+          $link = mysqli_connect('mysql.parqueindustrial.libreta.net', 'parquejacque', 'ScparqueSc', 'dicbd', 3306);      
+          //$dbh = mysqli_connect($db_server, DB_USERNAME, DB_PASSWORD, DB_NAME, $port);
           $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-          $resultado =  DB_SERVER::select($sql);
+          //$resultado =  DB::select($sql);
+          $resultado =  mysqli_select_db($link, 'dicbd');
 
           if (!empty($resultado))
           {
