@@ -36,7 +36,6 @@ class PHPGetListadoController extends Controller
                 //CONSULTA A LA BASE DE DATOS
                 $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
                 $resultado=mysqli_query($conexion,$accion_nm);
-                echo($resultado);
 
           /**/
           if (!empty($resultado))
