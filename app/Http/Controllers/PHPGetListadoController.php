@@ -28,7 +28,7 @@ class PHPGetListadoController extends Controller
                 $password_db = "ScparqueSc";
                 //Conectar a la base de datos
                 //$conexion = mysqli_connect("mysql.parqueindustrial.libreta.net", "parquejacque", "Para Parque Insdustrial" , "dicbd");
-                $conexion = mysql_connect("mysql.parqueindustrial.libreta.net", "parquejacque", "ScparqueSc");
+                $conexion = mysqli_connect("mysql.parqueindustrial.libreta.net", "parquejacque", "ScparqueSc");
                 $resultado = $conexion->select("SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id");
                 //Seleccionar la base de datos
                 //mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
