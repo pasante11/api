@@ -15,28 +15,22 @@ class PHPGetListadoController extends Controller
         ];
     try
       {
-          
-
-        //   $sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-        //   $resultado =  DB::select($sql);
+          //$sql ="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
+          $resultado =  DB::select("SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id");
 
           /**/
-          //CONEXIÓN A LA BASE DE DATOS
-                $hostname_db = "190.181.62.50";
-                $database_db = "dicbd";
-                $username_db = "padidb";
-                $password_db = "Padi123*+";
-
-                //Conectar a la base de datos
-                $conexion = mysqli_connect($hostname_db,  $username_db, $password_db);
-                //$conexion = mysqli_connect("mysql.parqueindustrial.libreta.net", "parquejacque", "ScparqueSc");
-                //$resultado = $conexion->query("SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id");
-                //Seleccionar la base de datos
-                mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
-                //CONSULTA A LA BASE DE DATOS
-                $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
-                $resultado=mysqli_query($conexion,$accion_nm);
-
+                //CONEXIÓN A LA BASE DE DATOS
+                // $hostname_db = "190.181.62.50";
+                // $database_db = "dicbd";
+                // $username_db = "padidb";
+                // $password_db = "Padi123*+";
+                // //Conectar a la base de datos
+                // $conexion = mysqli_connect($hostname_db,  $username_db, $password_db);
+                // //Seleccionar la base de datos
+                // mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
+                // //CONSULTA A LA BASE DE DATOS
+                // $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
+                // $resultado=mysqli_query($conexion,$accion_nm);
           /**/
           if (!empty($resultado))
           {
