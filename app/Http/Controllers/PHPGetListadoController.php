@@ -36,11 +36,12 @@ class PHPGetListadoController extends Controller
                 //CONSULTA A LA BASE DE DATOS
                 $accion_nm="SELECT DISTINCT  terrenos.pi FROM terrenos, inspeccions WHERE inspeccions.terreno_id=terrenos.id";
                 $resultado=mysqli_query($conexion,$accion_nm);
+                $resultado1=query($accion_nm);
           /**/
           if (!empty($resultado))
           {
               $oPaquete["message"] = "Datos obtenidos exitosamente";
-              $oPaquete["lista"] = [$accion_nm];
+              $oPaquete["lista"] = [$resultado1];
           }else{
               $oPaquete["message"] = "No existe el dato";
               $oPaquete["lista"] = [];
