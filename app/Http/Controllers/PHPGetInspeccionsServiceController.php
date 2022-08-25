@@ -78,7 +78,7 @@ class PHPGetInspeccionsServiceController extends Controller
             ];
     try
           {
-              $sql ="SELECT empresas.razonsocial, empresas.telefono, empresas.email, inspeccions.horario, inspeccions.replegalposeedor, inspeccions.telefonoposeedor, inspeccions.emailposeedor, inspeccions.nit, inspeccions.registrocomercio
+              $sql ="SELECT empresas.razonsocial, empresas.telefono, empresas.email, inspeccions.horario, inspeccions.replegalposeedor, inspeccions.telefonoposeedor, inspeccions.emailposeedor, inspeccions.nit, inspeccions.registrocomercio, inspeccions.rai, inspeccions.psst, inspeccions.licenciambiental, inspeccions.medidorcre, inspeccions.medidorsaguapac, inspeccions.nombredelpersonal, inspeccions.telefonopersonal, inspeccions.observacionentrevista, inspeccions.tipoactividadterreno, inspeccions.cantidadempleados, inspeccions.mujeres, inspeccions.hombres,inspeccions.productoselaborados
               FROM inspeccions, empresas 
               WHERE inspeccions.terreno_id = '$idTerreno' AND  empresas.id = (SELECT estados.empresa_id 
                                                                          FROM estados 
