@@ -66,3 +66,5 @@ Route::post('phpgetDatosHomePage','App\Http\Controllers\PHPGetInspeccionsService
 
 Route::get('phpgetPI','App\Http\Controllers\PHPGetListadoController@getPI');    
 Route::post('phpgetListado','App\Http\Controllers\PHPGetListadoController@getListado');    
+Route::post('phpgetListadoFecha','App\Http\Controllers\PHPGetListadoController@getListadoPorFecha');    
+Route::get('phpgetListadoTodasPI','App\Http\Controllers\PHPGetListadoController@getListadoTodasPI');    

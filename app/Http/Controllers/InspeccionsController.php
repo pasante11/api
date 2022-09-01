@@ -158,10 +158,10 @@ class InspeccionsController extends Controller
      * @param  \App\Models\Inspeccions  $inspeccions
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInspeccionsRequest $request, Inspeccions $inspeccions)
-    {
-        //
-    }
+    // public function update(UpdateInspeccionsRequest $request, Inspeccions $inspeccions)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

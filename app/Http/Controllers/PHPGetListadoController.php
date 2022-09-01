@@ -86,4 +86,69 @@ class PHPGetListadoController extends Controller
                 $oPaquete
             );  
    }
+
+   public function getListadoPorFecha(Request $request)
+    {
+      $pi = $request->input("pi");
+      $oPaquete = [
+                  'message' => 'success',
+                  'values' => null
+              ];
+      try
+            {
+                $sql ="SELECT terrenos.pi, terrenos.manzana, terrenos.numlote, inspeccions.fecha
+                FROM terrenos, inspeccions
+                WHERE terrenos.pi='$pi' and terrenos.id=inspeccions.terreno_id
+                ORDER BY inspeccions.fecha DESC";
+
+                $resultado = DB::select($sql);
+                if (!empty($resultado))
+                {
+                    $oPaquete["message"] = "Datos obtenidos exitosamente";
+                    $oPaquete["values"] = $resultado;
+                }else{
+                    $oPaquete["message"] = "No existe el dato";
+                    $oPaquete["values"] = [];
+                }
+            }catch (\Throwable $ex){
+                $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+                $oPaquete["values"] = [];
+            }
+    
+            return response()->json(
+                $oPaquete
+            );  
+   }
+
+   public function getListadoTodasPI(Request $request)
+    {
+      $pi = $request->input("pi");
+      $oPaquete = [
+                  'message' => 'success',
+                  'values' => null
+              ];
+      try
+            {
+                $sql ="SELECT terrenos.pi, terrenos.manzana, terrenos.numlote, inspeccions.fecha
+                FROM terrenos, inspeccions
+                WHERE terrenos.id =inspeccions.terreno_id";
+
+                $resultado = DB::select($sql);
+                if (!empty($resultado))
+                {
+                    $oPaquete["message"] = "Datos obtenidos exitosamente";
+                    $oPaquete["values"] = $resultado;
+                }else{
+                    $oPaquete["message"] = "No existe el dato";
+                    $oPaquete["values"] = [];
+                }
+            }catch (\Throwable $ex){
+                $oPaquete["message"] = "No se pudo realizar la acción, por favor intente de nuevo.";
+                $oPaquete["values"] = [];
+            }
+    
+            return response()->json(
+                $oPaquete
+            );  
+   }
 }
